@@ -1,0 +1,113 @@
+#:import utils kivy.utils
+<EncodeScreen>:
+    MDBoxLayout:
+        padding: 20
+        orientation: "vertical"
+        md_bg_color: utils.get_color_from_hex('#EAF5F9')
+        spacing: 10
+        MDBoxLayout:
+            size_hint: 1, 0.5
+            pos_hint: {'center_x': 0.5}
+            MDCard:
+                md_bg_color: utils.get_color_from_hex('#ffffff')
+                radius: 10
+                padding: 10
+                ScrollView:
+                    id: scroll_view
+                    do_scroll_x: False
+                    MDLabel:
+                        id: textContent
+                        text: 'Trống'
+                        size_hint: 1, None
+                        size: self.texture_size
+        MDRelativeLayout:
+            size_hint: 1, 0.5
+            pos_hint: {'center_x': 0.5}
+            padding: 20
+            Label:
+                pos_hint: {'y':.75, 'x':0}
+                text: "Mã hóa RSA"
+                color: utils.get_color_from_hex('#116294')
+                size_hint: None, None
+            MDBoxLayout:
+                orientation:'horizontal'
+                radius: [25, ]
+                pos_hint: {'y':.7, 'x':0.05}
+                size_hint:(.95, .15)
+                MDTextFieldRound:
+                    id: link_file
+                    hint_text: "Nhập đường dẫn file"
+                    font_size:"14dp"
+                    size_hint:(.7, 1)
+                    pos_hint: {'center_y': .5}
+                    normal_color: utils.get_color_from_hex('#ffffff')
+                    color_active: utils.get_color_from_hex('#ffffff')
+                MDRaisedButton:
+                    text: "Chọn"
+                    pos_hint: {'center_y': .5}
+                    on_release: root.file_manager_open()
+            Label:
+                pos_hint: {'y':.35, 'x':0}
+                text: "Thực hiện"
+                color: utils.get_color_from_hex('#116294')
+                size_hint: None, None
+            MDGridLayout:
+                cols: 3
+                size_hint: (1, .3)
+                pos_hint: {'y':.1, 'x':0}
+                spacing: 5
+                MDCard:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.44}
+                    orientation: 'vertical'
+                    padding: '15dp'
+                    spacing: '15dp'
+                    radius: [16, ]
+                    on_release:
+                        root.read_file()
+                    MDIcon:
+                        icon: "note-text-outline"
+                        halign: 'center'
+                    MDLabel:
+                        text: "Đọc"
+                        halign: 'center'
+                MDCard:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.44}
+                    orientation: 'vertical'
+                    padding: '15dp'
+                    spacing: '15dp'
+                    radius: [16, ]
+                    MDIcon:
+                        icon: "lock-reset"
+                        halign: 'center'
+                    MDLabel:
+                        text: "Mã hóa"
+                        halign: 'center'
+                MDCard:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.44}
+                    orientation: 'vertical'
+                    padding: '15dp'
+                    spacing: '15dp'
+                    radius: [16, ]
+                    MDIcon:
+                        icon: "cog"
+                        halign: 'center'
+                    MDLabel:
+                        text: "Giải mã"
+                        halign: 'center'
+<ModalContent>:
+    orientation: "vertical"
+    spacing: "12dp"
+    size_hint_y: None
+    height: "120dp"
+    MDIcon:
+        icon: "alert-circle"
+        halign: 'center'
+        theme_text_color: "Error"
+        font_size: "40dp"
+    MDLabel:
+        text: "Đường dẫn không hợp lệ!!!"
+        halign: 'center'
+    MDRaisedButton:
+        text: "Đóng"
+        pos_hint: {'center_x': 0.5}
+        md_bg_color: utils.get_color_from_hex('#116294')

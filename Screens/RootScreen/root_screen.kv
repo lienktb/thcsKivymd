@@ -1,0 +1,21 @@
+#:import utils kivy.utils
+#:import KivyLexer kivy.extras.highlight.KivyLexer
+#:import HotReloadViewer kivymd.utils.hot_reload_viewer.HotReloadViewer
+<RootScreen>:
+    MDBottomNavigation:
+        panel_color: utils.get_color_from_hex('#ffffff')
+        MDBottomNavigationItem:
+            name: "home screen"
+            icon: "home"
+            text: "Trang chủ"
+            HomeScreen:
+        MDBottomNavigationItem:
+            name: "encode screen"
+            icon: "lock-reset"
+            text: "Mã hóa"
+            EncodeScreen:
+        MDBottomNavigationItem:
+            name: "embed screen"
+            icon: "code-tags"
+            text: "Nhúng"
+            EmbedScreen:
