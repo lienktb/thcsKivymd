@@ -1,0 +1,5 @@
+[b]1. Kỹ thuật giấu tin[/b]
+Steganography(kỹ thuật giấu tin): là kỹ thuật che giấu một tập tin, thông điệp, hình ảnh hoặc video trong các tập tin, thông điệp, hình ảnh hoặc video khác.
+
+[b]2. Thuật toán LSB[/b]
+Ý tưởng của thuật toán này là sẽ thay thế các bit LSB của từng byte trong giá trị RGB của từng Pixel. Sỡ dĩ chúng ta chỉ thay thế các bit LSB là vì sau khi thay đổi các giá trị trong RBG chỉ dao động 1 đơn vị, dùng mắt thường sẽ khó phát hiện ra sự thay đổi của bức ảnh, giúp đạt được mục đích ẩn dấu.

@@ -2,6 +2,7 @@
     IconLeftWidget:
         icon: root.icon
 <HomeScreen>:
+    id: home
     md_bg_color: utils.get_color_from_hex('#EAF5F9')
     MDBoxLayout:
         id: image_bg_box
@@ -9,18 +10,25 @@
         pos_hint: {"top": 1}
         padding: 20
         MDCard:
+            elevation: 0
             radius: [20,]
             md_bg_color: utils.get_color_from_hex('#79CAE8')
             MDBoxLayout:
                 padding: 10
                 orientation: 'vertical'
-                spacing: 10
-                size_hint: (.5, .3)
+                spacing: 20
+                size_hint: (.4, .3)
                 pos_hint: {'center_y': .5}
                 Label:
-                    text: "WELCOM"
+                    color: utils.get_color_from_hex('#116294')
+                    text: "[b]WELCOM[/b]"
+                    font_size: '16sp'
+                    markup: True
                 Label:
-                    text: "MY APP"
+                    color: utils.get_color_from_hex('#116294')
+                    text: "[b]MY APP[/b]"
+                    font_size: '16sp'
+                    markup: True
             Image:
                 id: image
                 source: "assets/images/bg1.png"
@@ -36,34 +44,36 @@
         pos_hint: {'center_x': 0.5}
 
         orientation: 'vertical'
-        MDCard:
-            padding: 20
-            orientation: 'vertical'
-            MDLabel:
+
+        MDTabs:
+            id: tabs
+            background_color: utils.get_color_from_hex('#EAF5F9')
+            text_color_normal: 0, 0, 1, .5
+            text_color_active: utils.get_color_from_hex('#116294')
+            color_indicator: 0.95, 0.95, 0.1, 1
+            lock_swiping: True
+            on_tab_switch: root.on_tab_switch(*args)
+            Tab:
                 text: "Mã hóa"
-            ScrollView:
-                do_scroll_x: False
-                MDLabel:
-                    size_hint_y: None
-                    text_size: self.width, None
-                    height: self.texture_size[1]
-                    text: "This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within, though the transition does limit overflow."
-        MDCard:
-            md_bg_color: utils.get_color_from_hex('#EAF5F9')
-            title: "Accordion Item #1"
-            ScrollView:
-                do_scroll_x: False
-                MDLabel:
-                    size_hint_y: None
-                    text_size: self.width, None
-                    height: self.texture_size[1]
-                    text: "This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within, though the transition does limit overflow."
-        MDCard:
-            title: "Accordion Item #1"
-            ScrollView:
-                do_scroll_x: False
-                MDLabel:
-                    size_hint_y: None
-                    text_size: self.width, None
-                    height: self.texture_size[1]
-                    text: "This is the first item's accordion body. It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within, though the transition does limit overflow."
+                title: "Mã hóa"
+
+            Tab:
+                text: "RSA"
+                title: "RSA"
+            Tab:
+                text: "LSB"
+                title: "LSB"
+<Tab>
+    MDCard:
+
+        padding: 10
+        ScrollView:
+            id: scroll_view
+            do_scroll_x: False
+            MDLabel:
+                id: label
+                text: root.content_text
+                size_hint: 1, None
+                markup: True
+                size: self.texture_size
+

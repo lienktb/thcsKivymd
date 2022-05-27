@@ -3,6 +3,10 @@ from kivymd.app import MDApp
 from kivy.core.window import Window
 import os
 from Screens.RootScreen.root_screen import RootScreen
+from Screens.HomeScreen.home_screen import HomeScreen
+from Screens.EncodeScreen.encode_screen import EncodeScreen
+from Screens.EmbedScreen.embed_screen import EmbedScreen
+
 import kivymd
 Window.size = (310, 580)
 

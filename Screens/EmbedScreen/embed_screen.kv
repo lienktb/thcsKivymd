@@ -19,14 +19,14 @@
             size_hint: 1, 0.5
             pos_hint: {'center_x': 0.5}
             Label:
-                pos_hint: {'y':.85, 'x':0}
-                text: "Mã hóa RSA"
+                pos_hint: {'y':.95, 'x':0}
+                text: "Nhúng"
                 color: utils.get_color_from_hex('#116294')
                 size_hint: None, None
             MDBoxLayout:
                 orientation:'horizontal'
                 radius: [25, ]
-                pos_hint: {'y':.8, 'x':0.05}
+                pos_hint: {'y':.9, 'x':0.05}
                 size_hint:(.95, .15)
                 MDTextFieldRound:
                     id: link_file
@@ -41,53 +41,58 @@
                     pos_hint: {'center_y': .5}
                     on_release: root.file_manager_open()
             MDTextFieldRound:
-                pos_hint: {'y':.55, 'x':0.05}
+                id: message
+                pos_hint: {'y':.65, 'x':0.05}
                 hint_text: "Nhập thông điệp"
                 size_hint:(.9, .15)
                 normal_color: utils.get_color_from_hex('#ffffff')
                 color_active: utils.get_color_from_hex('#ffffff')
             Label:
-                pos_hint: {'y':.2, 'x':0}
+                pos_hint: {'y':.3, 'x':0}
                 text: "Thực hiện"
                 color: utils.get_color_from_hex('#116294')
                 size_hint: None, None
             MDGridLayout:
                 cols: 3
-                size_hint: (1, .3)
+                size_hint: (1, .4)
                 pos_hint: {'y':0, 'x':0}
                 spacing: 5
-
                 MDCard:
                     pos_hint: {'center_x': 0.5, 'center_y': 0.44}
                     orientation: 'vertical'
                     padding: '15dp'
                     spacing: '15px'
                     radius: [16, ]
+                    on_release: root.embedwtm()
                     MDIcon:
                         icon: "code-tags"
                         halign: 'center'
                     MDLabel:
-                        text: "Nhúng"
+                        halign: 'center'
+                        text: "Water mark"
                 MDCard:
                     pos_hint: {'center_x': 0.5, 'center_y': 0.44}
                     orientation: 'vertical'
                     padding: '15dp'
                     spacing: '15px'
                     radius: [16, ]
+                    on_release: root.embedLsb()
                     MDIcon:
                         icon: "cog"
                         halign: 'center'
                     MDLabel:
-                        text: "Giải mã"
+                        halign: 'center'
+                        text: "Nhúng LSB"
                 MDCard:
                     pos_hint: {'center_x': 0.5, 'center_y': 0.44}
                     orientation: 'vertical'
                     padding: '15dp'
                     radius: [16, ]
                     spacing: '15px'
+                    on_release: root.decryptLsb()
                     MDIcon:
                         icon: "content-save"
                         halign: 'center'
                     MDLabel:
-                        text: "Lưu"
+                        text: "Giải mã"
                         halign: 'center'

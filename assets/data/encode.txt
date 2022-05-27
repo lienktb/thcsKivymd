@@ -1,0 +1,10 @@
+[b]1. Mã hoá là gì? Mã hoá hoạt động như thế nào?[/b]
+
+Mã hoá là một cách xáo trộn dữ liệu để chỉ các bên được uỷ quyền mới có thể hiểu được thông tin bên trong. Về mặt kỹ thuật, mã hoá là quá trình chuyển đổi văn bản con người đọc và hiểu được thành một văn bản không thể hiểu được (hay còn gọi là bản mã). Mã hoá sẽ yêu cầu sử dụng một khóa mật mã bao gồm: một tập các giá trị toán học mà cả người nhận và người gửi thông điệp mã hóa đều đồng ý sử dụng.
+
+[b]2. Các loại thuật toán mã hoá[/b]
+2.1. Mã hoá đối xứng
+Sử dụng cùng 1 khóa để mã hoá và giải mã. Điều này sẽ giúp doanh nghiệp tiết kiệm rất nhiều chi phí bảo mật nhưng cần phải đầu tư vào việc lưu trữ sao cho an toàn.
+
+2.2. Mã hóa không đối xứng
+Sử dụng 2 khóa công khai và riêng tư để mã hoá. Thông thường, khóa công khai dùng để mã hoá và khóa riêng tư để giải mã. Chỉ có người được cấp khóa riêng tư mới có thể giải mã. Tuy nhiên, phương pháp này sẽ rất tốn kém, bù lại, hiệu quả bảo mật cao hơn.
