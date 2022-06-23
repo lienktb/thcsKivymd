@@ -8,6 +8,8 @@ from kivymd.uix.button import MDRaisedButton
 from kivymd.uix.dialog import MDDialog
 from kivymd.uix.boxlayout import MDBoxLayout
 from kivy.network.urlrequest import UrlRequest
+import requests
+import json
 
 class ModalContent(MDBoxLayout):
     pass
@@ -63,14 +65,16 @@ class EncodeScreen(MDScreen):
     def encode(self):
         if(self.text):
             print(self.text)
-            headers = {'Content-Type': 'text/html'}
-            req = UrlRequest('https://thcs-ptit.herokuapp.com/encryptText', on_success=self.showResult,
-                             req_body=self.text,
-                             req_headers=headers)
+            data = {"text": self.text};
+            headers = {'Content-Type': 'application/json'}
+            req = requests.post('http://localhost:8080/encryptText', data=json.dumps(data), headers=headers);
+            res = json.loads(req.text);
+            if (res):
+                self.showResult(res);
         else:
             self.show_error()
         # print("ma hoa");
-    def showResult(self, req, result):
+    def showResult(self, result):
 
         print(result['text']);
         self.text = result['text'];
@@ -85,10 +89,13 @@ class EncodeScreen(MDScreen):
     def decode(self):
         if(self.text):
             print(self.text);
-            headers = {'Content-Type': 'text/html'}
-            req = UrlRequest('https://thcs-ptit.herokuapp.com/decryptTextPV', on_success=self.showResult,
-                             req_body=self.text,
-                             req_headers=headers)
+            data = {"text": self.text};
+            headers = {'Content-Type': 'application/json'}
+            req = requests.post('http://localhost:8080/decryptTextPV', data=json.dumps(data), headers=headers);
+            res = json.loads(req.text);
+            if (res):
+                self.showResult(res);
+            print(res)
         else:
             self.show_error();
     #

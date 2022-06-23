@@ -22,6 +22,7 @@ class EmbedScreen(MDScreen):
         file = filechooser.open_file();
         if(file):
             self.path = file[0]
+            print("hello")
             # this method returns a list with the first index
             # being the path of the file selected
             f = open(self.path, "rb");
@@ -37,7 +38,7 @@ class EmbedScreen(MDScreen):
 
     def embedwtm(self):
         if (self.media):
-            req = requests.post('https://thcs-ptit.herokuapp.com/wtfile',  files=self.media);
+            req = requests.post('http://localhost:8080/wtfile',  files=self.media);
             res = json.loads(req.text);
             img_data = requests.get(res["text"]).content
             with open(self.path, 'wb') as f:
@@ -62,7 +63,7 @@ class EmbedScreen(MDScreen):
         if(self.ids.message.text):
             self.message = self.ids.message.text;
         if(len(self.message) !=0 and self.media):
-            req = requests.post('https://thcs-ptit.herokuapp.com/encryptLsb',  files=self.media, data={"text": self.message});
+            req = requests.post('http://localhost:8080/encryptLsb',  files=self.media, data={"text": self.message});
             res = json.loads(req.text);
             img_data = requests.get(res["text"]).content
             with open(self.path, 'wb') as f:
@@ -82,7 +83,7 @@ class EmbedScreen(MDScreen):
         self.media = {"file": image}
         if(self.media):
             try:
-                req = requests.post('https://thcs-ptit.herokuapp.com/decryptLsb', files=self.media);
+                req = requests.post('http://localhost:8080/decryptLsb', files=self.media);
                 res = json.loads(req.text);
                 if(res):
                     print(res["text"]);
